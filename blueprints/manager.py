@@ -127,6 +127,12 @@ def editManager():
     if telephone != None:
         manager.telephone = telephone
     if mailbox != None:
+        curr = Manager.query.filter(Manager.mailbox == mailbox).first()
+        if curr != None and curr.id == id:
+            return {
+                "errno": 1,
+                "errmsg": '邮箱已存在!'
+            }
         manager.mailbox = mailbox
     if userpic != None:
         manager.userpic = userpic
