@@ -51,5 +51,19 @@ def check_session():
 @db.route("/logout", methods=["DELETE"])
 def logout():
     session.pop("username")
-    return jsonify(msg="退出登录成功")
+    return jsonify({
+            "errno": 0,
+            "errmsg": '退出登录成功',
+        })
 
+@db.route("/rolelist", methods=['GET'])
+def queryRoleList():
+    Roleitems = Roleitem.query.all()
+    res = []
+    for item in Roleitems:
+        res.append(item.to_json())
+    return {
+        "errno": 0,
+        "errmsg": '',
+        "data": res
+    }

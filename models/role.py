@@ -23,6 +23,6 @@ class Role(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "role_ids": jsonify(self.role_ids.split(',')),
+            "role_ids": self.role_ids.split(','),
             "role_desc": self.role_desc
         }
