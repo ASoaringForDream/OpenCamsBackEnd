@@ -20,9 +20,13 @@ class Role(db.Model):
     role_desc = db.Column(db.Text)
 
     def to_json(self):
+        role_ids = self.role_ids.split(',')
+        role_ids_int = []
+        for item in role_ids:
+            role_ids_int.append(int(item))
         return {
             "id": self.id,
             "name": self.name,
-            "role_ids": self.role_ids.split(','),
+            "role_ids": role_ids_int,
             "role_desc": self.role_desc
         }

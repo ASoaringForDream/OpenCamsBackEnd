@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, session, make_response
 from models.manager import Manager
+from models.cam import Cam
 from models.user import User
 from models.role import Role, Roleitem
 

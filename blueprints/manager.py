@@ -1,9 +1,7 @@
-from flask import Blueprint, request, jsonify, session, make_response
-import time
+from flask import Blueprint, request, jsonify
 from sqlalchemy import or_
 from models.manager import Manager
-from models.user import User
-from models.role import Role, Roleitem
+from models.role import Role
 from exts import db as datebase
 
 
@@ -128,7 +126,7 @@ def editManager():
         manager.telephone = telephone
     if mailbox != None:
         curr = Manager.query.filter(Manager.mailbox == mailbox).first()
-        if curr != None and curr.id == id:
+        if curr != None and curr.id != id:
             return {
                 "errno": 1,
                 "errmsg": '邮箱已存在!'
