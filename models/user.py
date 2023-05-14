@@ -8,7 +8,7 @@ class User(db.Model):
     username = db.Column(db.String(64), nullable=False)
     password = db.Column(db.String(64), nullable=False)
     creattime = db.Column(db.DateTime, default=datetime.datetime.now)
-    name = db.Column(db.String(12), nullable=False)
+    name = db.Column(db.String(12))
     sex = db.Column(db.Enum("男","女","保密"), nullable=False, default="保密")
     state = db.Column(db.Enum("正常", "封禁"), nullable=False, default="正常")
     birth = db.Column(db.Date, default=datetime.date.today)
