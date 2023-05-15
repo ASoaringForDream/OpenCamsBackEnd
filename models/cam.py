@@ -13,7 +13,7 @@ class Cam(db.Model):
     clickcount = db.Column(db.Integer, default=0, nullable=False)
     type = db.Column(db.Enum("iframe", "HLS"), nullable=False)
     tag = db.Column(db.Text)
-    mainTag = db.Column(db.Integer)
+    mainTag = db.Column(db.Integer, db.ForeignKey("cam_main_tag.id"))
     posterImgPath = db.Column(db.String(512))
     posterImg = db.Column(db.String(256))
     country = db.Column(db.String(256))
@@ -55,6 +55,12 @@ class CamMainTag(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+        }
+    def to_json1(self, count):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "count": count
         }
 
 class CamTag(db.Model):

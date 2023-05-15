@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from sqlalchemy import or_
 from models.user import User
+from models.operation import Like, DisLike, Visit, Collect
 from exts import db as datebase
 
 
